@@ -1,4 +1,4 @@
-### TIPS
+### TIPS FOR JAVA
 - 0 int [] array  数组自带属性。C/C++ 使用sizeof()
   - array.length
 - pow()
@@ -13,6 +13,15 @@
     - peek() 栈顶值
     - 
 - - Queue接口与List、Set同一级别，都是继承了Collection接口。LinkedList实现了Queue接 口。Queue接口窄化了对LinkedList的方法的访问权限（即在方法中的参数类型如果是Queue时，就完全只能访问Queue接口所定义的方法 了，而不能直接访问 LinkedList的非Queue的方法），以使得只有恰当的方法才可以使用。
+
+### TIPS FOR C艹
+STL:
+- 0 vector
+ - vector.size()
+ - vector.push_back() 
+- 1 str
+ - str.substr(n,pos)  //从角标n开始 总共len个数据
+
 ### 题目
 - 1.旋转数组最小的值
 - 2.变态跳台阶  
@@ -38,3 +47,9 @@ https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf?tpId=13&tqId=
 (a / b ) % c = ( a * b^ -1 ) % c
 the answer ( a % b) always be less than b.
 基本上是要记住上面这几条的，基本够用。。而b经常取的数为一个比较大的素数。
+
+- 9.两个数字各出现一次，各找出这俩数。
+find the key。异或。
+- 10.在递增序列里 合为S的两个数。 
+左右俩指针。
+
