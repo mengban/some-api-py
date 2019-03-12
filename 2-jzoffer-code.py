@@ -80,5 +80,10 @@ print(insert_sort(nums))
 
 
 
-arr  = {1:3,2:4,3:0}
-sorted(arr,key=arr.values())
+
+arr = [1,9,8,2,3,5,4]
+ret = []
+for index,item in  enumerate(arr):
+    ret.append((index,item))
+print(sorted(ret,key = lambda x : x[1]))
+
