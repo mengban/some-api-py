@@ -1,34 +1,29 @@
+### 最大滑动窗口
+### 基本原则 窗口里的某一元素 其前面的数值一定比他大
 def maxInWindow(nums,size):
     """queue 只保存角标
-    >>> [2,3,4,2,6,2,5,1]
-    
+    >>> maxInWindow([2,3,4,2,6,2,5,1])
+
     """
     
     _max = []
     queue = [] 
     for i in range(size): 
         queue.append(i)
-    while(nums[queue[len(nums) - 1]] > nums[queue[0]] ): #前面只保留比队列尾大的数
-        queue.pop()
+        while nums[queue[len(queue)-1]] > nums[queue[len(queue)-2]]:
+            queue.pop(len(queue)-2)  #最后一个数的前面没有比他小的数
+    _max.append(nums[queue[0]])
     
-    _max.append(nums[queue[0]]) #第一个max
-    
-    while(size<len(nums) - 1 ): #开始出队列
-        while(nums[size] > nums[queue[0]]): #新数据大 将队列删除
-            queue.pop()
-        queue.apend(size)
-        while():
-            pass
-        
-        
-        
-        
-        size += 1
+    for i in range(size,len(nums)):
+        queue.append(i)
+        while nums[queue[len(queue)-1]] > nums[queue[len(queue)-2]]:
+            queue.pop(len(queue)-2)  #最后一个数的前面没有比他小的数
+        if queue[len(queue) - 1] - queue[0] >= size: ## 队尾 与队首差大于窗口长度 则把队首元素踢出去
+            queue.pop(0)
+        _max.append(nums[queue[0]])
+    return _max
 
-nums = [2,3,4,2,6,2,5,1]
-maxInWindow(nums,3)
-
-nums = [2,3,4,1,6,8]
+### 插入排序
 def insert_sort(arr):
     _len = len(arr)
     index = [_ for _ in range(_len) ] #保存角标
@@ -86,4 +81,21 @@ ret = []
 for index,item in  enumerate(arr):
     ret.append((index,item))
 print(sorted(ret,key = lambda x : x[1]))
+
+
+## 只出现一次的字符
+def appearfirst(_str):
+    index = [0 for item in range(256)]
+    queue = []
+    for ch in _str:
+        queue.append(ch)
+        index[ord(ch)] += 1
+        while len(queue)!=0 and index[ord(queue[0])] > 1:  #保证第一个只出现一次
+            queue.pop(0)
+        if len(queue) == 0:
+            print('#')
+        else:
+            print(queue[0])
+appearfirst("googlehile len(queue)!=0 and index[ord(queue[0])] > 1")
+        
 
